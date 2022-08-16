@@ -3,29 +3,12 @@
 Linux bash script automation for metasploit
 -------------------------------------------
 
-Command line script for automating metasploit functions
+Command line script for automating metasploit exploiting based on ezsploit
 
 - Checks for metasploit service and starts if not present
 
-- Easily craft meterpreter reverse_tcp payloads for Windows, Linux, Android and Mac
+- Crafts meterpreter reverse_tcp payloads for Windows, Linux, Android and Mac
 
-- Start multiple meterpreter reverse_tcp listners 
+- Start meterpreter reverse_tcp listners 
 
-- Assistance with building basic persistence options and scripts
 
-- Armitage launcher 
-
-- Drop into Msfconsole
-
-- Some other fun stuff :)
-
-------------------------------------------
-To-Do
-Add more functions to payloads/listners, java, php, tomcat etc
-Improve overall functionality
-
-Screenshots
-
-![Alt text](https://lh3.googleusercontent.com/2_kIZVLfV37vEOtAzaaCocfgK2R2WhZ3ZG2WGr_KTZlzhxzw80IG2_TGEeG8N-BQXPU3qHHuC8WE3oSlDFD0oidMfv-rejay3dwlK1Dv6gxKlzCERxI1xoiOqQeSZIam3VfCq6ZxElgak47pfJdp1ZxhmfnNH_ELQF2uXQBZSDCdyg_6rLlyUP78HU8MM22PqHQH286R1QYPXJGhA2JJ1n1wQvd5oR7fYkO4yu9Qp5MvxoUcjWKXGtd0PereVdKCm05zBGRrOFj4dTjo-j6gWhBJAy-FGL5Vf8sqjQo7CWlq2GtvqOuoUPTjDXt70eYyg3QFZHae9RFfYrd3YxarNAzrplaP71jn_pW-SrXWo0gfezIOU0YqwhlfaqAfi5nwUyVkhZ1GXWDv5z3HgOWDkZiAKr4SIrUaZVu-AaUNX9vB6rds7hEtiQgQyiznDQPcjCmKi-CcTAbDIvYHWqZki00RnudhQjcBfsRi8VXEFIeXLWyHMWbMT_M7ihTPcKVmHVVDSCSLqi5uivMwHaOHsl4-ZUKj0NlM789scDDd0faqihYbHvcL0P3tKat1SqpRavNf=w484-h541-no "Interactive payload generator")
-
-![Alt text](https://lh3.googleusercontent.com/u_5eZt8J0jyV3lctOYKDej7rwIFZ7Z7szLkYFuPgskYD180cpkjEBSD1T7VdwRHIlX-qlS7w4uaNDv0CcMWIFI82ZTUeFmMyRt2kYMjYO8fPLkMxontDpBeHQax2HJNs_rW_TPpD4ueIyPKvrGcnarAzj9WEcrLUVb0ShkPleGYUfUBBU-gmigT0WtOdLrdiUxMZPb4Xib5Q9nhmX7FlDThhTgrOKlH3l5H2Z-7TRyZ-kSgBBwLJ00W6ooZTuwC4tifTEK2f7fHeLNWz9HmmM0Ic1Tgc5_iCMJgrxXLxTDZQKN8NTFXIfiDoJRaUJP1tWmae9LoVkmLb0T0U0_aiAlaSKFzSE7YqP-jYGdMcVZWOdKCLm3ds1ETy0H0rN92nctXjykgDtn40OiJbE_mr-rgCGzMQfPQEZYSkWienMK63Q5uISCsbkyd0VrTN92ya8Y9sn_msICbpmtoDVV0Oi8fQ3THA0tTkOHgdAoZhSangHcUVjTLvyZT8QKoxGRcemIcqxkakEKIeSk5u6OCZQI3P0R9Zhn2T0TGePcydD3z3wgmXm7VOmzk6bZVKwhwGlnQt=w950-h673-no "Easily start reverse listners")
